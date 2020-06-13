@@ -44,9 +44,6 @@
     <Compile Include="Interfaces\IClientCardRepozitory.cs" />
     <Compile Include="Interfaces\IGroupRepozitory.cs" />
     <Compile Include="Interfaces\ITrainingRepozitory.cs" />
-    <Compile Include="Models\ClientCard.cs" />
-    <Compile Include="Models\Group.cs" />
-    <Compile Include="Models\TrainingKind.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

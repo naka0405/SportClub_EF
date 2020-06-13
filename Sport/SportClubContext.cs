@@ -1,5 +1,5 @@
 ﻿using System.Data.Entity;
-using Utils.Models;
+using Models;
 
 namespace Sport
 {

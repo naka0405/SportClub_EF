@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Utils.Interfaces;
-using Utils.Models;
+using Interfaces;
+using Models;
 
 namespace Sport
 {
@@ -22,11 +22,11 @@ namespace Sport
             }
 
         }
-        public void AddGroupForTraining(string trainingName, Group group)
+        public void AddGroupForTraining(int trainingId, Group group)
         {
             using(ctx)
             {
-                var training = ctx.Trainings.Where(x => x.TrainingName == trainingName).FirstOrDefault();
+                var training = ctx.Trainings.Where(x => x.ID == trainingId).FirstOrDefault();
                 training.Groups.Add(group);
                 ctx.SaveChanges();
             }
@@ -42,11 +42,11 @@ namespace Sport
             }
         }
 
-        public List<Group> GetGroupsByTrainingName(string name)
+        public List<Group> GetGroupsByTrainingId(int id)
         {
             using (ctx)
             {
-                var training = ctx.Trainings.Where(x => x.TrainingName == name).FirstOrDefault();
+                var training = ctx.Trainings.Where(x => x.ID == id).FirstOrDefault();
                 var list = ctx.Groups.Where(x => x.TrainingId == training.ID).ToList();
             return list;
             }                

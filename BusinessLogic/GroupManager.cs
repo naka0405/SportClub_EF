@@ -1,11 +1,11 @@
 ﻿using Sport;
 using System.Collections.Generic;
-using Utils.Interfaces;
-using Utils.Models;
+using Interfaces;
+using Models;
 
 namespace BusinessLogic
 {
-    public class GroupManager////реализует доступ к методам DAL
+    public class GroupManager:IGroupBL
     {
         private readonly IGroupRepozitory groupRepozitory;
         public GroupManager()
@@ -14,14 +14,21 @@ namespace BusinessLogic
         }
 
 
-        public void AddNewGroup(Group group)
+        public void AddNewGroup(GroupBL groupBL)
         {
+            var group = new Group()
+            {
+                TrainerName = groupBL.TrainerName,
+                ClassNumber = groupBL.ClassNumber,
+                StartTime = groupBL.StartTime
+            };
             groupRepozitory.AddNewGroup(group);
         }
 
-        public void AddGroupForTraining(string trainingName, Group group)
+        public void AddGroupForTraining(int trainingId, GroupBL groupBL)
         {
-            groupRepozitory.AddGroupForTraining(trainingName, group);
+            var group = new Group() { TrainerName = groupBL.TrainerName, ClassNumber = groupBL.ClassNumber, StartTime = groupBL.StartTime }; 
+            groupRepozitory.AddGroupForTraining(trainingId, group);
         }
 
         public void DeleteGroupById(int id)
@@ -29,9 +36,9 @@ namespace BusinessLogic
             groupRepozitory.DeleteGroupById(id);
         }
 
-        public List<Group> GetGroupsByTrainingName(string name)
+        public List<Group> GetGroupsByTrainingId(int id)
         {
-            return groupRepozitory.GetGroupsByTrainingName(name);
+            return groupRepozitory.GetGroupsByTrainingId(id);
         }
     }
 }

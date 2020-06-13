@@ -1,7 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data.Entity;
-using Utils.Models;
+using Models;
 
 namespace Sport
 {
@@ -21,7 +20,8 @@ namespace Sport
                 new TrainingKind(){ TrainingName="BreakDance"}
             };
             var newClientCard = new ClientCard() { FirstName = "Galina", LastName = "Pulina", Telephone = 0509969375, Training = trainings };
-            
+            trainings[0].Clients.Add(newClientCard);
+            trainings[1].Clients.Add(newClientCard);
             ctx.Groups.AddRange(groups);
             ctx.Trainings.AddRange(trainings);
             ctx.ClientCards.Add(newClientCard);           

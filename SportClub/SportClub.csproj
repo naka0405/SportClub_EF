@@ -65,9 +65,9 @@
       <Project>{e920eddc-3482-4b27-9716-7058bf6881a4}</Project>
       <Name>BusinessLogic</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Utils\Utils.csproj">
-      <Project>{255f01c0-7c00-4ccb-b5e2-6ceeecbb1189}</Project>
-      <Name>Utils</Name>
+    <ProjectReference Include="..\Sport\SportClubDAL.csproj">
+      <Project>{93154810-E31F-4C2C-B7F4-23D87A4EE463}</Project>
+      <Name>SportClubDAL</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -1,10 +1,11 @@
 ﻿using Sport;
-using Utils.Interfaces;
-using Utils.Models;
+using Models;
+using Interfaces;
+using System.Collections.Generic;
 
 namespace BusinessLogic
 {
-    public class ClientCardManager
+    public class ClientCardManager:IClientCardBL
     {
         private readonly IClientCardRepozitory clientCardRepozitory;
         public ClientCardManager()
@@ -12,19 +13,26 @@ namespace BusinessLogic
             clientCardRepozitory = new RepozClientCardDAL();
         }
 
-        public void AddClientCard(ClientCard card)
+
+        public void AddClientCard(ClientCardBL cardBL)
         {
+            var card = new ClientCard()
+            {
+                FirstName = cardBL.FirstName,
+                LastName = cardBL.LastName,
+                Telephone = cardBL.Telephone
+            };
             clientCardRepozitory.AddClient(card);
         }
 
-        public void DeleteClientCard(int id)
+        public void DeleteClientCardById(int id)
         {
             clientCardRepozitory.DeleteClientById(id);
         }
 
-        public void GetAllClientCards()
+        public List<ClientCard> GetClientCards()
         {
-            clientCardRepozitory.GetClientCards();
-        }        
+           return clientCardRepozitory.GetClientCards();
+        }
     }
 }

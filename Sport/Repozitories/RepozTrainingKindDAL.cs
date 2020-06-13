@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Linq;
-using Utils.Interfaces;
-using Utils.Models;
+using Models;
+using Interfaces;
+using System.Collections.Generic;
 
 namespace Sport
 {
@@ -25,15 +26,12 @@ namespace Sport
             }          
         }
 
-        public void GetAllKindsOfTraining()
+        public List<TrainingKind> GetAllKindsOfTraining()
         {
             using (ctx)
             {
-                foreach(var training in ctx.Trainings.ToList())
-                {
-                    Console.WriteLine($"{training.TrainingName}- ");                    
-                }
-               ctx.SaveChanges();
+                var allKindsOfTraining = ctx.Trainings.ToList();                
+                return allKindsOfTraining;               
             }
         }
 
@@ -46,12 +44,12 @@ namespace Sport
             ctx.SaveChanges();
         }
 
-        public void AddClientForTraining(string trainingKind, int id)
+        public void AddClientForTraining(int trainingKindId, int id)
         {
             using (ctx)
             {
                 var client= ctx.ClientCards.Where(x => x.ID == id).First();
-                var selectTraining = ctx.Trainings.Where(x => x.TrainingName == trainingKind).FirstOrDefault();
+                var selectTraining = ctx.Trainings.Where(x => x.ID == trainingKindId).FirstOrDefault();
                 selectTraining.Clients.Add(client);
                 ctx.SaveChanges();
             }

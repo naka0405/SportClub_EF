@@ -52,6 +52,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Initializer.cs" />
+    <Compile Include="Interfaces\IClientCardRepozitory.cs" />
+    <Compile Include="Interfaces\IGroupRepozitory.cs" />
+    <Compile Include="Interfaces\ITrainingRepozitory.cs" />
+    <Compile Include="Models\ClientCard.cs" />
+    <Compile Include="Models\Group.cs" />
+    <Compile Include="Models\TrainingKind.cs" />
     <Compile Include="Repozitories\RepozClientCardDAL.cs" />
     <Compile Include="Repozitories\RepozGroupDAL.cs" />
     <Compile Include="Repozitories\RepozTrainingKindDAL.cs" />
@@ -61,12 +67,6 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Utils\Utils.csproj">
-      <Project>{255f01c0-7c00-4ccb-b5e2-6ceeecbb1189}</Project>
-      <Name>Utils</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

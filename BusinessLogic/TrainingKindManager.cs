@@ -1,10 +1,11 @@
 ﻿using Sport;
-using Utils.Interfaces;
-using Utils.Models;
+using Interfaces;
+using Models;
+using System.Collections.Generic;
 
 namespace BusinessLogic
 {
-    public class TrainingKindManager//реализует доступ к методам DAL
+    public class TrainingKindManager:ITrainingBL
     {
         private readonly ITrainingRepozitory trainingRepozitory;
         public TrainingKindManager()
@@ -12,24 +13,29 @@ namespace BusinessLogic
             trainingRepozitory = new RepozTrainingKindDAL();
         }
 
-        public void AddNewKindOfTraining(TrainingKind kind )
+      
+        public List<TrainingKind> GetAllKindsOfTraining()
         {
-            trainingRepozitory.AddNewKindOfTraining(kind);
+            var allTrainings= trainingRepozitory.GetAllKindsOfTraining();
+
+            return allTrainings;
         }
 
-        public void DeleteTraining(int id)
+       public void AddClientForTraining(int trainingKindId, int id)
+        {
+            trainingRepozitory.AddClientForTraining(trainingKindId, id);
+        }
+
+        public void AddNewKindOfTraining(TrainingKindBL newKind)
+        {
+            var trainingKind = new TrainingKind() { TrainingName = newKind.TrainingName };
+            trainingRepozitory.AddNewKindOfTraining(trainingKind);
+        }
+
+        public void RemovingKindOfTrainingById(int id)
         {
             trainingRepozitory.RemovingKindOfTrainingById(id);
         }
 
-        public void GetAllTrainings()
-        {
-            trainingRepozitory.GetAllKindsOfTraining();
-        }
-
-       public void AddClientForTraining(string trainingKind, int id)
-        {
-            trainingRepozitory.AddClientForTraining(trainingKind, id);
-        }
     }
 }

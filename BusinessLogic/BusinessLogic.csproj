@@ -43,6 +43,12 @@
   <ItemGroup>
     <Compile Include="ClientCardManager.cs" />
     <Compile Include="GroupManager.cs" />
+    <Compile Include="Interfaces\IClientCardBL.cs" />
+    <Compile Include="Interfaces\IGroupBL.cs" />
+    <Compile Include="Interfaces\ITrainingBL.cs" />
+    <Compile Include="Models\ClientCardBL.cs" />
+    <Compile Include="Models\GroupBL.cs" />
+    <Compile Include="Models\TrainingKindBL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TrainingKindManager.cs" />
   </ItemGroup>
@@ -50,10 +56,6 @@
     <ProjectReference Include="..\Sport\SportClubDAL.csproj">
       <Project>{93154810-e31f-4c2c-b7f4-23d87a4ee463}</Project>
       <Name>SportClubDAL</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Utils\Utils.csproj">
-      <Project>{255F01C0-7C00-4CCB-B5E2-6CEEECBB1189}</Project>
-      <Name>Utils</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

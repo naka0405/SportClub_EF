@@ -1,7 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
-using Utils.Interfaces;
-using Utils.Models;
+using Interfaces;
+using Models;
 
 namespace Sport
 {
@@ -50,16 +51,12 @@ namespace Sport
              }
         }
 
-        public void GetClientCards()
+        public List<ClientCard> GetClientCards()
         {
             using (ctx)
             {
-                var clientCards = ctx.ClientCards.ToList();
-
-                foreach (var item in clientCards)
-                {
-                    Console.WriteLine($"#{item.ID}|{item.FirstName} {item.LastName}|{item.Telephone}");
-                }
+                var clientCards = ctx.ClientCards.ToList();                
+                return clientCards;
             }
         } 
     }
