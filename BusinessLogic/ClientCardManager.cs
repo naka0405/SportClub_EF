@@ -17,7 +17,7 @@ namespace BusinessLogic
         public void AddClientCard(ClientCardBL cardBL)
         {
             var card = new ClientCard()
-            {
+            {              
                 FirstName = cardBL.FirstName,
                 LastName = cardBL.LastName,
                 Telephone = cardBL.Telephone
@@ -30,9 +30,22 @@ namespace BusinessLogic
             clientCardRepozitory.DeleteClientById(id);
         }
 
-        public List<ClientCard> GetClientCards()
+        public List<ClientCardBL> GetClientCards()
         {
-           return clientCardRepozitory.GetClientCards();
+            var listBL = new List<ClientCardBL>();
+            var listCards= clientCardRepozitory.GetClientCards();
+            foreach (var c in listCards)
+            {
+                var clientCardBL = new ClientCardBL()
+                {
+                    ID=c.ID,
+                    FirstName = c.FirstName,
+                    LastName = c.LastName,
+                    Telephone = c.Telephone
+                };
+                listBL.Add(clientCardBL);
+            }
+                return listBL;
         }
     }
 }

@@ -4,12 +4,12 @@ using Models;
 
 namespace Sport
 {
-     public class Initializer: DropCreateDatabaseIfModelChanges<SportClubContext>
+     public class Initializer: CreateDatabaseIfNotExists<SportClubContext>
     {
         protected override void Seed(SportClubContext ctx)
         {   
             var groups = new List<Group> {
-                new Group(){ TrainerName="Shkurkina U.", ClassNumber=7, StartTime="15-00" },
+                new Group(){ TrainerName="Shkurkina U.", ClassNumber=7, StartTime="15-00"},
                 new Group(){ TrainerName="Kolosov M.", ClassNumber=7, StartTime="10-00" }
                 };
             var hipHop = new TrainingKind() { TrainingName = "HipHop", Groups = groups };

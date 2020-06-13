@@ -7,6 +7,6 @@ namespace Interfaces
     {
         void AddClientCard(ClientCardBL clientBL);
         void DeleteClientCardById(int id);
-        List<ClientCard> GetClientCards();       
+        List<ClientCardBL> GetClientCards();       
     }
 }

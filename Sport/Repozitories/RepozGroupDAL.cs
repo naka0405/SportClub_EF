@@ -47,7 +47,8 @@ namespace Sport
             using (ctx)
             {
                 var training = ctx.Trainings.Where(x => x.ID == id).FirstOrDefault();
-                var list = ctx.Groups.Where(x => x.TrainingId == training.ID).ToList();
+                var a = ctx.Groups.ToList();
+                var list = a.Where(x => x.TrainingKindId == training.ID).ToList();
             return list;
             }                
         }

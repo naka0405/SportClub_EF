@@ -8,6 +8,6 @@ namespace Interfaces
         void AddNewGroup(GroupBL group);
         void AddGroupForTraining(int idTraining, GroupBL group);
         void DeleteGroupById(int id);
-        List<Group> GetGroupsByTrainingId(int id );
+        List<GroupBL> GetGroupsByTrainingId(int id );
     }
 }

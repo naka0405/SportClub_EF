@@ -5,7 +5,7 @@ using Models;
 
 namespace BusinessLogic
 {
-    public class GroupManager:IGroupBL
+    public class GroupManager : IGroupBL
     {
         private readonly IGroupRepozitory groupRepozitory;
         public GroupManager()
@@ -27,7 +27,7 @@ namespace BusinessLogic
 
         public void AddGroupForTraining(int trainingId, GroupBL groupBL)
         {
-            var group = new Group() { TrainerName = groupBL.TrainerName, ClassNumber = groupBL.ClassNumber, StartTime = groupBL.StartTime }; 
+            var group = new Group() { TrainerName = groupBL.TrainerName, ClassNumber = groupBL.ClassNumber, StartTime = groupBL.StartTime };
             groupRepozitory.AddGroupForTraining(trainingId, group);
         }
 
@@ -36,9 +36,24 @@ namespace BusinessLogic
             groupRepozitory.DeleteGroupById(id);
         }
 
-        public List<Group> GetGroupsByTrainingId(int id)
+        public List<GroupBL> GetGroupsByTrainingId(int id)
         {
-            return groupRepozitory.GetGroupsByTrainingId(id);
+            var listBL = new List<GroupBL>();
+            var list = groupRepozitory.GetGroupsByTrainingId(id);
+            foreach (var gr in list)
+            {
+                var groupBL = new GroupBL()
+                {
+                    ID = gr.ID,
+                    TrainerName = gr.TrainerName,
+                    StartTime = gr.StartTime,
+                    TrainingKindId=gr.TrainingKindId,
+                    Training=gr.Training
+                };
+                listBL.Add(groupBL);
+            }
+            return listBL;
         }
     }
 }
+
